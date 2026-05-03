@@ -42,9 +42,10 @@ namespace Gym_Membership_Mangement_System
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Image = ((System.Drawing.Image)(resources.GetObject("label11.Image")));
             this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label11.Location = new System.Drawing.Point(209, 17);
+            this.label11.Location = new System.Drawing.Point(157, 14);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(525, 96);
+            this.label11.Size = new System.Drawing.Size(394, 78);
             this.label11.TabIndex = 39;
             this.label11.Text = "Southern Fitness";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -53,22 +54,24 @@ namespace Gym_Membership_Mangement_System
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(39, 132);
+            this.dataGridView1.Location = new System.Drawing.Point(29, 107);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(871, 505);
+            this.dataGridView1.Size = new System.Drawing.Size(653, 410);
             this.dataGridView1.TabIndex = 38;
             // 
             // ViewStaff
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(948, 675);
+            this.ClientSize = new System.Drawing.Size(711, 548);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewStaff";

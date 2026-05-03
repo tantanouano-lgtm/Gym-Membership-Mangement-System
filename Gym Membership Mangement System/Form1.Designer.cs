@@ -63,14 +63,15 @@ namespace Gym_Membership_Mangement_System
             this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1441, 72);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1028, 72);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // newMember
             // 
             this.newMember.Name = "newMember";
-            this.newMember.Size = new System.Drawing.Size(14, 68);
+            this.newMember.Size = new System.Drawing.Size(12, 68);
             this.newMember.Click += new System.EventHandler(this.newMember_Click);
             // 
             // newMemberToolStripMenuItem
@@ -78,8 +79,8 @@ namespace Gym_Membership_Mangement_System
             this.newMemberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newMemberToolStripMenuItem.Image")));
             this.newMemberToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.newMemberToolStripMenuItem.Name = "newMemberToolStripMenuItem";
-            this.newMemberToolStripMenuItem.Size = new System.Drawing.Size(177, 68);
-            this.newMemberToolStripMenuItem.Text = "New Member";
+            this.newMemberToolStripMenuItem.Size = new System.Drawing.Size(144, 68);
+            this.newMemberToolStripMenuItem.Text = "Add Trainor";
             this.newMemberToolStripMenuItem.Click += new System.EventHandler(this.newMemberToolStripMenuItem_Click);
             // 
             // newStaffToolStripMenuItem
@@ -87,7 +88,7 @@ namespace Gym_Membership_Mangement_System
             this.newStaffToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newStaffToolStripMenuItem.Image")));
             this.newStaffToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.newStaffToolStripMenuItem.Name = "newStaffToolStripMenuItem";
-            this.newStaffToolStripMenuItem.Size = new System.Drawing.Size(152, 68);
+            this.newStaffToolStripMenuItem.Size = new System.Drawing.Size(134, 68);
             this.newStaffToolStripMenuItem.Text = "New Staff";
             this.newStaffToolStripMenuItem.Click += new System.EventHandler(this.newStaffToolStripMenuItem_Click);
             // 
@@ -96,7 +97,7 @@ namespace Gym_Membership_Mangement_System
             this.equipmentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("equipmentToolStripMenuItem.Image")));
             this.equipmentToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.equipmentToolStripMenuItem.Name = "equipmentToolStripMenuItem";
-            this.equipmentToolStripMenuItem.Size = new System.Drawing.Size(159, 68);
+            this.equipmentToolStripMenuItem.Size = new System.Drawing.Size(141, 68);
             this.equipmentToolStripMenuItem.Text = "Equipment";
             this.equipmentToolStripMenuItem.Click += new System.EventHandler(this.equipmentToolStripMenuItem_Click);
             // 
@@ -105,8 +106,8 @@ namespace Gym_Membership_Mangement_System
             this.searchMemberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchMemberToolStripMenuItem.Image")));
             this.searchMemberToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.searchMemberToolStripMenuItem.Name = "searchMemberToolStripMenuItem";
-            this.searchMemberToolStripMenuItem.Size = new System.Drawing.Size(191, 68);
-            this.searchMemberToolStripMenuItem.Text = "Search Member";
+            this.searchMemberToolStripMenuItem.Size = new System.Drawing.Size(130, 68);
+            this.searchMemberToolStripMenuItem.Text = "GymRats";
             this.searchMemberToolStripMenuItem.Click += new System.EventHandler(this.searchMemberToolStripMenuItem_Click);
             // 
             // deleteMemberToolStripMenuItem
@@ -114,7 +115,7 @@ namespace Gym_Membership_Mangement_System
             this.deleteMemberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteMemberToolStripMenuItem.Image")));
             this.deleteMemberToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.deleteMemberToolStripMenuItem.Name = "deleteMemberToolStripMenuItem";
-            this.deleteMemberToolStripMenuItem.Size = new System.Drawing.Size(191, 68);
+            this.deleteMemberToolStripMenuItem.Size = new System.Drawing.Size(164, 68);
             this.deleteMemberToolStripMenuItem.Text = "Delete Member";
             this.deleteMemberToolStripMenuItem.Click += new System.EventHandler(this.deleteMemberToolStripMenuItem_Click);
             // 
@@ -123,7 +124,7 @@ namespace Gym_Membership_Mangement_System
             this.logOutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logOutToolStripMenuItem.Image")));
             this.logOutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(140, 68);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(126, 68);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
@@ -132,28 +133,29 @@ namespace Gym_Membership_Mangement_System
             this.exitToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exitToolStripMenuItem.Image")));
             this.exitToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(111, 68);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(102, 68);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(14, 68);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 68);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(14, 68);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(12, 68);
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Lucida Calligraphy", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(648, 474);
+            this.label1.Location = new System.Drawing.Point(518, 478);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(651, 150);
+            this.label1.Size = new System.Drawing.Size(488, 122);
             this.label1.TabIndex = 1;
             this.label1.Text = "Getting in shape isn\'t hard when you\'re in a supportive environment. Southern Fit" +
     "ness is more than just a gym - it\'s a caring family that\'s there to help you ach" +
@@ -166,27 +168,30 @@ namespace Gym_Membership_Mangement_System
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(49, 321);
+            this.label3.Location = new System.Drawing.Point(2, 230);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(790, 112);
+            this.label3.Size = new System.Drawing.Size(560, 91);
             this.label3.TabIndex = 32;
             this.label3.Text = "Southern Fitness";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1441, 777);
+            this.ClientSize = new System.Drawing.Size(1028, 609);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gym Membership Management System";
+            this.Text = "Gym Management System";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

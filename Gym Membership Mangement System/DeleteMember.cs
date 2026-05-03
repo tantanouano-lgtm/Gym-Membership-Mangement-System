@@ -1,75 +1,100 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace Gym_Membership_Mangement_System
 {
     public partial class DeleteMember : Form
     {
+        private System.Windows.Forms.Timer refreshTimer;
+
         public DeleteMember()
         {
             InitializeComponent();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void DeleteMember_Load(object sender, EventArgs e)
         {
-            if (MessageBox.Show(" This Will delete your data. Confirm?","Delete Data",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            await LoadMembers();
+
+            refreshTimer = new System.Windows.Forms.Timer();
+            refreshTimer.Interval = 5000;
+            refreshTimer.Tick += async (s, ev) => await LoadMembers();
+            refreshTimer.Start();
+        }
+
+        private async System.Threading.Tasks.Task LoadMembers()
+        {
+            try
             {
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = "Data Source=CHAMIKARA\\SQLEXPRESS;Initial Catalog=gym;Integrated Security=True";
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                string result = await ApiHelper.GetMembers();
+                var members = JsonConvert.DeserializeObject<List<Member>>(result);
 
-                cmd.CommandText = "delete  from NewMember where MID = " + txtDelete.Text + "";
-
-                SqlDataAdapter DA = new SqlDataAdapter(cmd);
-                DataSet DS = new DataSet();
-                DA.Fill(DS);
-
-             //   dataGridView1.DataSource = DS.Tables[0];
+                if (dataGridView1.InvokeRequired)
+                {
+                    dataGridView1.Invoke(new Action(() => {
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = members;
+                    }));
+                }
+                else
+                {
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = members;
+                }
             }
-
-            else
+            catch (Exception ex)
             {
-                this.Activate();
-
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = "Data Source=CHAMIKARA\\SQLEXPRESS;Initial Catalog=gym;Integrated Security=True";
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
-
-                cmd.CommandText = "Select * from NewMember ";
-
-                SqlDataAdapter DA = new SqlDataAdapter(cmd);
-                DataSet DS = new DataSet();
-                DA.Fill(DS);
-
-                dataGridView1.DataSource = DS.Tables[0];
-
+                Console.WriteLine("Load error: " + ex.Message);
             }
         }
 
-        private void DeleteMember_Load(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = "Data Source=CHAMIKARA\\SQLEXPRESS;Initial Catalog=gym;Integrated Security=True";
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            if (string.IsNullOrWhiteSpace(txtDelete.Text))
+            {
+                MessageBox.Show("Please enter a Member ID to delete.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            cmd.CommandText = "Select * from NewMember ";
+            if (MessageBox.Show("This will delete the member. Confirm?", "Delete Data",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                try
+                {
+                    string result = await ApiHelper.DeleteMember(int.Parse(txtDelete.Text));
+                    var response = JsonConvert.DeserializeObject<dynamic>(result);
 
-            SqlDataAdapter DA = new SqlDataAdapter(cmd);
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
+                    if (response["success"] == true)
+                    {
+                        MessageBox.Show("Member deleted successfully! ✅", "Success",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtDelete.Clear();
+                        await LoadMembers();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete member.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
-            dataGridView1.DataSource = DS.Tables[0];
+        private void DeleteMember_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (refreshTimer != null)
+            {
+                refreshTimer.Stop();
+                refreshTimer.Dispose();
+            }
         }
     }
 }

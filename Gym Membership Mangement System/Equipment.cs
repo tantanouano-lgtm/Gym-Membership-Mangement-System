@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
+using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace Gym_Membership_Mangement_System
 {
@@ -23,43 +18,124 @@ namespace Gym_Membership_Mangement_System
 
         }
 
+        // SAVE BUTTON
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtEquipName.Text))
+            {
+                MessageBox.Show("Please enter Equipment Name.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCost.Text))
+            {
+                MessageBox.Show("Please enter Cost.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!decimal.TryParse(txtCost.Text, out decimal cost))
+            {
+                MessageBox.Show("Please enter a valid number for Cost.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtQuantity.Text))
+            {
+                MessageBox.Show("Please enter Quantity.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(txtQuantity.Text, out int quantity))
+            {
+                MessageBox.Show("Please enter a valid whole number for Quantity.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                var equipmentData = new
+                {
+                    equipment_name = txtEquipName.Text,
+                    description = txtDescription.Text,
+                    muscles_used = txtMuscleUsed.Text,
+                    delivery_date = dateTimePickerDeliveryDate.Value.ToString("yyyy-MM-dd"),
+                    cost = txtCost.Text,
+                    quantity = txtQuantity.Text
+                };
+
+                string json = JsonConvert.SerializeObject(equipmentData);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                using (HttpClient client = new HttpClient())
+                {
+                    string url = "http://localhost/GMS/api/equipment.php";
+                    HttpResponseMessage response = await client.PostAsync(url, content);
+                    string result = await response.Content.ReadAsStringAsync();
+
+                    dynamic responseData = JsonConvert.DeserializeObject(result);
+
+                    if (responseData.success == true)
+                    {
+                        MessageBox.Show("Equipment saved successfully!", "Success",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        txtEquipName.Clear();
+                        txtDescription.Clear();
+                        txtMuscleUsed.Clear();
+                        txtCost.Clear();
+                        txtQuantity.Clear();
+                        dateTimePickerDeliveryDate.Value = DateTime.Now;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to save: " + responseData.message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // RESET BUTTON
         private void button2_Click(object sender, EventArgs e)
         {
             txtEquipName.Clear();
             txtDescription.Clear();
             txtMuscleUsed.Clear();
             txtCost.Clear();
+            txtQuantity.Clear();
             dateTimePickerDeliveryDate.Value = DateTime.Now;
-
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string EquipName = txtEquipName.Text;
-            string Description = txtDescription.Text;
-            string MUsed = txtMuscleUsed.Text;
-            string DDate = dateTimePickerDeliveryDate.Text;
-            Int64 cost = Int64.Parse(txtCost.Text);
-
-
-            SqlConnection con = new SqlConnection();
-            //con.ConnectionString = "data source = CHAMIKARA\\SQLEXPRESS; databse =gym; integrated security = True";
-            con.ConnectionString = "Data Source=CHAMIKARA\\SQLEXPRESS;Initial Catalog=gym;Integrated Security=True";
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-
-            cmd.CommandText = "insert into Equipment (EquipName,EDescription,MUsed,DDate,Cost) values ('" + EquipName + "','" + Description + "','" + MUsed + "','" + DDate + "'," + cost + ")";
-            SqlDataAdapter DA = new SqlDataAdapter(cmd);
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            MessageBox.Show("Data saved");
-        }
-
+        // VIEW EQUIPMENT BUTTON
         private void button3_Click(object sender, EventArgs e)
         {
             ViewEquipment ve = new ViewEquipment();
             ve.Show();
+        }
+
+        private void txtCost_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerDeliveryDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Equipment_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

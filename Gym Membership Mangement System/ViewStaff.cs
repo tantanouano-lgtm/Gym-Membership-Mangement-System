@@ -1,38 +1,122 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using Newtonsoft.Json;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gym_Membership_Mangement_System
 {
-    public partial class ViewStaff : Form
+    public partial class ViewEquipment : Form
     {
-        public ViewStaff()
+        private System.Windows.Forms.Timer refreshTimer;
+
+        public ViewEquipment()
         {
             InitializeComponent();
         }
 
-        private void ViewStaff_Load(object sender, EventArgs e)
+        private async void ViewEquipment_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            //con.ConnectionString = "data source = CHAMIKARA\\SQLEXPRESS; databse =gym; integrated security = True";
-            con.ConnectionString = "Data Source=CHAMIKARA\\SQLEXPRESS;Initial Catalog=gym;Integrated Security=True";
+            // Set DataGridView properties
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.ReadOnly = true;
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            await LoadEquipment();
 
-            cmd.CommandText = "select * from NewStaff";
-            SqlDataAdapter DA = new SqlDataAdapter(cmd);
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
+            refreshTimer = new System.Windows.Forms.Timer();
+            refreshTimer.Interval = 5000;
+            refreshTimer.Tick += async (s, ev) => await LoadEquipment();
+            refreshTimer.Start();
+        }
 
-            dataGridView1.DataSource = DS.Tables[0];
+        private async Task LoadEquipment()
+        {
+            try
+            {
+                string result = await ApiHelper.GetEquipment();
+                var wrapper = JsonConvert.DeserializeObject<EquipmentResponse>(result);
+
+                if (wrapper != null && wrapper.success && wrapper.data != null)
+                {
+                    if (dataGridView1.InvokeRequired)
+                    {
+                        dataGridView1.Invoke(new Action(() => {
+                            dataGridView1.DataSource = null;
+                            dataGridView1.DataSource = wrapper.data;
+                        }));
+                    }
+                    else
+                    {
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = wrapper.data;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No equipment data found.", "Info",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load equipment: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // DELETE BUTTON
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an equipment to delete.",
+                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var selectedRow = dataGridView1.SelectedRows[0];
+            int equipmentId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+            string equipmentName = selectedRow.Cells["equipment_name"].Value.ToString();
+
+            var confirm = MessageBox.Show(
+                "Are you sure you want to delete \"" + equipmentName + "\"?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.No) return;
+
+            try
+            {
+                string result = await ApiHelper.DeleteEquipment(equipmentId);
+                dynamic response = JsonConvert.DeserializeObject(result);
+
+                if (response.success == true)
+                {
+                    MessageBox.Show("Equipment deleted successfully!",
+                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await LoadEquipment();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to delete: " + response.message,
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ViewEquipment_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (refreshTimer != null)
+            {
+                refreshTimer.Stop();
+                refreshTimer.Dispose();
+            }
         }
     }
 }

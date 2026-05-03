@@ -16,31 +16,47 @@ namespace Gym_Membership_Mangement_System
         {
             InitializeComponent();
         }
+
         Boolean b = true;
+
         private void newMember_Click(object sender, EventArgs e)
         {
-            if (b== true)
+            if (b == true)
             {
                 menuStrip1.Dock = DockStyle.Left;
                 b = false;
-                newMember.Image = Image.FromFile(@"C:\Users\Chamikara Mendis\Downloads\arrow-down-sign-to-navigate.png");
+                if (System.IO.File.Exists(@"C:\Users\Chamikara Mendis\Downloads\arrow-down-sign-to-navigate.png"))
+                {
+                    newMember.Image = Image.FromFile(@"C:\Users\Chamikara Mendis\Downloads\arrow-down-sign-to-navigate.png");
+                }
             }
             else
             {
                 menuStrip1.Dock = DockStyle.Top;
                 b = true;
-                newMember.Image = Image.FromFile(@"C:\Users\Chamikara Mendis\Downloads\right-arrow.png");
+                if (System.IO.File.Exists(@"C:\Users\Chamikara Mendis\Downloads\right-arrow.png"))
+                {
+                    newMember.Image = Image.FromFile(@"C:\Users\Chamikara Mendis\Downloads\right-arrow.png");
+                }
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            newMember.Image = Image.FromFile(@"C:\Users\Chamikara Mendis\Downloads\right-arrow.png");
+            if (System.IO.File.Exists(@"C:\Users\Chamikara Mendis\Downloads\right-arrow.png"))
+            {
+                newMember.Image = Image.FromFile(@"C:\Users\Chamikara Mendis\Downloads\right-arrow.png");
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Nothing needed here anymore
         }
 
         private void newMemberToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            New_Member obj = new New_Member();
+            Trainer obj = new Trainer();
             obj.Show();
         }
 
@@ -70,7 +86,8 @@ namespace Gym_Membership_Mangement_System
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("This will close your application Confirm?","Close",MessageBoxButtons.YesNo,MessageBoxIcon.Warning)==DialogResult.Yes)
+            if (MessageBox.Show("This will close your application Confirm?", "Close",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -82,13 +99,18 @@ namespace Gym_Membership_Mangement_System
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show ("Log out !! Confirm? ","Log out",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning) == DialogResult.OK)
+            if (MessageBox.Show("Log out !! Confirm? ", "Log out",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 this.Close();
                 Login lg = new Login();
                 lg.Show();
-
             }
+        }
+
+        private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            // Nothing needed here
         }
     }
 }

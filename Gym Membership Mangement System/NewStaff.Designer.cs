@@ -57,37 +57,45 @@ namespace Gym_Membership_Mangement_System
             // 
             // txtFname
             // 
-            this.txtFname.Location = new System.Drawing.Point(260, 196);
+            this.txtFname.Location = new System.Drawing.Point(195, 159);
+            this.txtFname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFname.Name = "txtFname";
-            this.txtFname.Size = new System.Drawing.Size(203, 22);
+            this.txtFname.Size = new System.Drawing.Size(153, 20);
             this.txtFname.TabIndex = 0;
+            this.txtFname.TextChanged += new System.EventHandler(this.txtFname_TextChanged);
             // 
             // txtLname
             // 
-            this.txtLname.Location = new System.Drawing.Point(260, 256);
+            this.txtLname.Location = new System.Drawing.Point(195, 208);
+            this.txtLname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLname.Name = "txtLname";
-            this.txtLname.Size = new System.Drawing.Size(203, 22);
+            this.txtLname.Size = new System.Drawing.Size(153, 20);
             this.txtLname.TabIndex = 1;
+            this.txtLname.TextChanged += new System.EventHandler(this.txtLname_TextChanged);
             // 
             // txtMobile
             // 
-            this.txtMobile.Location = new System.Drawing.Point(260, 449);
+            this.txtMobile.Location = new System.Drawing.Point(195, 365);
+            this.txtMobile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMobile.Name = "txtMobile";
-            this.txtMobile.Size = new System.Drawing.Size(203, 22);
+            this.txtMobile.Size = new System.Drawing.Size(153, 20);
             this.txtMobile.TabIndex = 5;
+            this.txtMobile.TextChanged += new System.EventHandler(this.txtMobile_TextChanged);
             // 
             // txtState
             // 
-            this.txtState.Location = new System.Drawing.Point(723, 326);
+            this.txtState.Location = new System.Drawing.Point(542, 265);
+            this.txtState.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtState.Name = "txtState";
-            this.txtState.Size = new System.Drawing.Size(203, 22);
+            this.txtState.Size = new System.Drawing.Size(153, 20);
             this.txtState.TabIndex = 8;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(723, 196);
+            this.txtEmail.Location = new System.Drawing.Point(542, 159);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(203, 22);
+            this.txtEmail.Size = new System.Drawing.Size(153, 20);
             this.txtEmail.TabIndex = 6;
             // 
             // radioButton1
@@ -96,13 +104,15 @@ namespace Gym_Membership_Mangement_System
             this.radioButton1.BackColor = System.Drawing.Color.Transparent;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioButton1.Location = new System.Drawing.Point(260, 319);
+            this.radioButton1.Location = new System.Drawing.Point(195, 259);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(80, 29);
+            this.radioButton1.Size = new System.Drawing.Size(65, 24);
             this.radioButton1.TabIndex = 2;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Male";
             this.radioButton1.UseVisualStyleBackColor = false;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -110,36 +120,42 @@ namespace Gym_Membership_Mangement_System
             this.radioButton2.BackColor = System.Drawing.Color.Transparent;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioButton2.Location = new System.Drawing.Point(364, 320);
+            this.radioButton2.Location = new System.Drawing.Point(273, 260);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(104, 29);
+            this.radioButton2.Size = new System.Drawing.Size(86, 24);
             this.radioButton2.TabIndex = 3;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Female";
             this.radioButton2.UseVisualStyleBackColor = false;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // dateTimePickerJOINDate
             // 
             this.dateTimePickerJOINDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerJOINDate.Location = new System.Drawing.Point(723, 258);
+            this.dateTimePickerJOINDate.Location = new System.Drawing.Point(542, 210);
+            this.dateTimePickerJOINDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerJOINDate.Name = "dateTimePickerJOINDate";
-            this.dateTimePickerJOINDate.Size = new System.Drawing.Size(203, 22);
+            this.dateTimePickerJOINDate.Size = new System.Drawing.Size(153, 20);
             this.dateTimePickerJOINDate.TabIndex = 7;
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(723, 387);
+            this.txtCity.Location = new System.Drawing.Point(542, 314);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(203, 22);
+            this.txtCity.Size = new System.Drawing.Size(153, 20);
             this.txtCity.TabIndex = 9;
             // 
             // dateTimePickerDOB
             // 
             this.dateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDOB.Location = new System.Drawing.Point(260, 385);
+            this.dateTimePickerDOB.Location = new System.Drawing.Point(195, 313);
+            this.dateTimePickerDOB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerDOB.Name = "dateTimePickerDOB";
-            this.dateTimePickerDOB.Size = new System.Drawing.Size(203, 22);
+            this.dateTimePickerDOB.Size = new System.Drawing.Size(153, 20);
             this.dateTimePickerDOB.TabIndex = 4;
+            this.dateTimePickerDOB.ValueChanged += new System.EventHandler(this.dateTimePickerDOB_ValueChanged);
             // 
             // button2
             // 
@@ -148,9 +164,10 @@ namespace Gym_Membership_Mangement_System
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(371, 579);
+            this.button2.Location = new System.Drawing.Point(278, 470);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(192, 62);
+            this.button2.Size = new System.Drawing.Size(144, 50);
             this.button2.TabIndex = 11;
             this.button2.Text = "Reset";
             this.button2.UseVisualStyleBackColor = true;
@@ -164,9 +181,10 @@ namespace Gym_Membership_Mangement_System
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(112, 579);
+            this.button1.Location = new System.Drawing.Point(84, 470);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 62);
+            this.button1.Size = new System.Drawing.Size(144, 50);
             this.button1.TabIndex = 10;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = false;
@@ -179,12 +197,14 @@ namespace Gym_Membership_Mangement_System
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
             this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Location = new System.Drawing.Point(16, 246);
+            this.label5.Location = new System.Drawing.Point(12, 200);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(196, 39);
+            this.label5.Size = new System.Drawing.Size(147, 32);
             this.label5.TabIndex = 26;
             this.label5.Text = "Last Name";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label1
             // 
@@ -193,12 +213,14 @@ namespace Gym_Membership_Mangement_System
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(16, 192);
+            this.label1.Location = new System.Drawing.Point(12, 156);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 35);
+            this.label1.Size = new System.Drawing.Size(147, 28);
             this.label1.TabIndex = 25;
             this.label1.Text = "First Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label10
             // 
@@ -207,12 +229,14 @@ namespace Gym_Membership_Mangement_System
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Image = ((System.Drawing.Image)(resources.GetObject("label10.Image")));
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label10.Location = new System.Drawing.Point(16, 315);
+            this.label10.Location = new System.Drawing.Point(12, 256);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(163, 39);
+            this.label10.Size = new System.Drawing.Size(122, 32);
             this.label10.TabIndex = 27;
             this.label10.Text = "Gender";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label4
             // 
@@ -221,12 +245,14 @@ namespace Gym_Membership_Mangement_System
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Location = new System.Drawing.Point(16, 383);
+            this.label4.Location = new System.Drawing.Point(12, 311);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(214, 37);
+            this.label4.Size = new System.Drawing.Size(160, 30);
             this.label4.TabIndex = 28;
             this.label4.Text = "Date Of Birth";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label2
             // 
@@ -235,12 +261,14 @@ namespace Gym_Membership_Mangement_System
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(16, 449);
+            this.label2.Location = new System.Drawing.Point(12, 365);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 31);
+            this.label2.Size = new System.Drawing.Size(112, 25);
             this.label2.TabIndex = 29;
             this.label2.Text = "Mobile";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label9
             // 
@@ -249,9 +277,10 @@ namespace Gym_Membership_Mangement_System
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Image = ((System.Drawing.Image)(resources.GetObject("label9.Image")));
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label9.Location = new System.Drawing.Point(524, 192);
+            this.label9.Location = new System.Drawing.Point(393, 156);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(144, 34);
+            this.label9.Size = new System.Drawing.Size(108, 28);
             this.label9.TabIndex = 30;
             this.label9.Text = "Email";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -263,9 +292,10 @@ namespace Gym_Membership_Mangement_System
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Image = ((System.Drawing.Image)(resources.GetObject("label8.Image")));
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label8.Location = new System.Drawing.Point(524, 258);
+            this.label8.Location = new System.Drawing.Point(393, 210);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(184, 28);
+            this.label8.Size = new System.Drawing.Size(138, 23);
             this.label8.TabIndex = 31;
             this.label8.Text = "Join Date";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -277,9 +307,10 @@ namespace Gym_Membership_Mangement_System
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(524, 322);
+            this.label3.Location = new System.Drawing.Point(393, 262);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 28);
+            this.label3.Size = new System.Drawing.Size(108, 23);
             this.label3.TabIndex = 32;
             this.label3.Text = "State";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -291,9 +322,10 @@ namespace Gym_Membership_Mangement_System
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Image = ((System.Drawing.Image)(resources.GetObject("label6.Image")));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(524, 383);
+            this.label6.Location = new System.Drawing.Point(393, 311);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(132, 28);
+            this.label6.Size = new System.Drawing.Size(99, 23);
             this.label6.TabIndex = 33;
             this.label6.Text = "City";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -305,9 +337,10 @@ namespace Gym_Membership_Mangement_System
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Image = ((System.Drawing.Image)(resources.GetObject("label11.Image")));
             this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label11.Location = new System.Drawing.Point(207, 26);
+            this.label11.Location = new System.Drawing.Point(155, 21);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(525, 96);
+            this.label11.Size = new System.Drawing.Size(394, 78);
             this.label11.TabIndex = 34;
             this.label11.Text = "Southern Fitness";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -317,9 +350,10 @@ namespace Gym_Membership_Mangement_System
             this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button3.Location = new System.Drawing.Point(631, 579);
+            this.button3.Location = new System.Drawing.Point(473, 470);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(207, 62);
+            this.button3.Size = new System.Drawing.Size(155, 50);
             this.button3.TabIndex = 35;
             this.button3.Text = "View Staff";
             this.button3.UseVisualStyleBackColor = true;
@@ -328,11 +362,11 @@ namespace Gym_Membership_Mangement_System
             // NewStaff
             // 
             this.AcceptButton = this.button1;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(948, 675);
+            this.ClientSize = new System.Drawing.Size(711, 548);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label6);
@@ -357,11 +391,13 @@ namespace Gym_Membership_Mangement_System
             this.Controls.Add(this.txtLname);
             this.Controls.Add(this.txtFname);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewStaff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Staff";
+            this.Load += new System.EventHandler(this.NewStaff_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
