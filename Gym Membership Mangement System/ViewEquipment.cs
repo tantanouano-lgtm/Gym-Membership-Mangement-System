@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace Gym_Membership_Mangement_System
     public partial class ViewEquipment : Form
     {
         private System.Windows.Forms.Timer refreshTimer;
+        private List<EquipmentModel> allEquipment = new List<EquipmentModel>();
 
         public ViewEquipment()
         {
@@ -17,6 +19,10 @@ namespace Gym_Membership_Mangement_System
 
         private async void ViewEquipment_Load(object sender, EventArgs e)
         {
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.ReadOnly = true;
+
             await LoadEquipment();
 
             refreshTimer = new System.Windows.Forms.Timer();
@@ -30,34 +36,57 @@ namespace Gym_Membership_Mangement_System
             try
             {
                 string result = await ApiHelper.GetEquipment();
-                var response = JsonConvert.DeserializeObject<dynamic>(result);
+                var wrapper = JsonConvert.DeserializeObject<EquipmentResponse>(result);
 
-                if (response["success"] == true)
+                if (wrapper != null && wrapper.success && wrapper.data != null)
                 {
-                    var equipment = JsonConvert.DeserializeObject<List<EquipmentModel>>(
-                        JsonConvert.SerializeObject(response["data"]));
+                    allEquipment = wrapper.data;
 
                     if (dataGridView1.InvokeRequired)
                     {
                         dataGridView1.Invoke(new Action(() => {
-                            dataGridView1.DataSource = null;
-                            dataGridView1.DataSource = equipment;
+                            ApplySearch(txtSearch.Text);
                         }));
                     }
                     else
                     {
-                        dataGridView1.DataSource = null;
-                        dataGridView1.DataSource = equipment;
+                        ApplySearch(txtSearch.Text);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Refresh error: " + ex.Message);
+                MessageBox.Show("Failed to load: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // DELETE BUTTON
+        private void ApplySearch(string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = allEquipment;
+            }
+            else
+            {
+                string lower = keyword.ToLower();
+                var filtered = allEquipment.Where(eq =>
+                    (eq.equipment_name != null && eq.equipment_name.ToLower().Contains(lower)) ||
+                    (eq.description != null && eq.description.ToLower().Contains(lower)) ||
+                    (eq.muscles_used != null && eq.muscles_used.ToLower().Contains(lower))
+                ).ToList();
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = filtered;
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            ApplySearch(txtSearch.Text);
+        }
+
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0)
