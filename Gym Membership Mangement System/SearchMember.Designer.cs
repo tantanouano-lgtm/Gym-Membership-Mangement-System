@@ -35,13 +35,16 @@ namespace Gym_Membership_Mangement_System
             this.btnSearch = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.dgvPayments = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(238, 136);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(206, 20);
             this.txtSearch.TabIndex = 25;
@@ -51,11 +54,11 @@ namespace Gym_Membership_Mangement_System
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(23, 182);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(667, 340);
+            this.dataGridView1.Size = new System.Drawing.Size(814, 263);
             this.dataGridView1.TabIndex = 26;
             // 
             // btnSearch
@@ -65,7 +68,7 @@ namespace Gym_Membership_Mangement_System
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.Window;
             this.btnSearch.Location = new System.Drawing.Point(506, 118);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(144, 50);
             this.btnSearch.TabIndex = 27;
@@ -80,12 +83,12 @@ namespace Gym_Membership_Mangement_System
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Location = new System.Drawing.Point(20, 129);
+            this.label4.Location = new System.Drawing.Point(72, 130);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(190, 28);
+            this.label4.Size = new System.Drawing.Size(162, 28);
             this.label4.TabIndex = 29;
-            this.label4.Text = "Enter Member ID";
+            this.label4.Text = "Enter Member ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
@@ -103,6 +106,26 @@ namespace Gym_Membership_Mangement_System
             this.label11.Text = "Southern Fitness";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // dgvPayments
+            // 
+            this.dgvPayments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPayments.Location = new System.Drawing.Point(24, 506);
+            this.dgvPayments.Name = "dgvPayments";
+            this.dgvPayments.Size = new System.Drawing.Size(535, 231);
+            this.dgvPayments.TabIndex = 37;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(30, 469);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 24);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Payment History";
+            // 
             // SearchMember
             // 
             this.AcceptButton = this.btnSearch;
@@ -110,14 +133,16 @@ namespace Gym_Membership_Mangement_System
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(711, 548);
+            this.ClientSize = new System.Drawing.Size(861, 749);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dgvPayments);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtSearch);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SearchMember";
@@ -126,6 +151,7 @@ namespace Gym_Membership_Mangement_System
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchMember_FormClosing_1);
             this.Load += new System.EventHandler(this.SearchMember_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,5 +163,7 @@ namespace Gym_Membership_Mangement_System
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridView dgvPayments;
+        private System.Windows.Forms.Label label1;
     }
 }
