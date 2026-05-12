@@ -62,8 +62,8 @@ namespace Gym_Membership_Mangement_System
 
         private void newStaffToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NewStaff ns = new NewStaff();
-            ns.Show();
+            ViewStaff vs = new ViewStaff();
+            vs.Show();
         }
 
         private void equipmentToolStripMenuItem_Click(object sender, EventArgs e)

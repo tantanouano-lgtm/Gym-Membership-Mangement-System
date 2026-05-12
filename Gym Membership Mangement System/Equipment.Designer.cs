@@ -46,6 +46,7 @@ namespace Gym_Membership_Mangement_System
             this.label11 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtMuscleUsed
@@ -249,6 +250,19 @@ namespace Gym_Membership_Mangement_System
             this.label1.Text = "Quantity";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(12, 9);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(100, 30);
+            this.btnBack.TabIndex = 38;
+            this.btnBack.Text = "← Back";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Equipment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,6 +270,7 @@ namespace Gym_Membership_Mangement_System
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(711, 548);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.label11);
@@ -303,5 +318,6 @@ namespace Gym_Membership_Mangement_System
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBack;
     }
 }

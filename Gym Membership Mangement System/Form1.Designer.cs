@@ -36,7 +36,6 @@ namespace Gym_Membership_Mangement_System
             this.newStaffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.equipmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +55,6 @@ namespace Gym_Membership_Mangement_System
             this.newStaffToolStripMenuItem,
             this.equipmentToolStripMenuItem,
             this.searchMemberToolStripMenuItem,
-            this.deleteMemberToolStripMenuItem,
             this.logOutToolStripMenuItem,
             this.exitToolStripMenuItem,
             this.toolStripMenuItem1,
@@ -88,8 +86,8 @@ namespace Gym_Membership_Mangement_System
             this.newStaffToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newStaffToolStripMenuItem.Image")));
             this.newStaffToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.newStaffToolStripMenuItem.Name = "newStaffToolStripMenuItem";
-            this.newStaffToolStripMenuItem.Size = new System.Drawing.Size(134, 68);
-            this.newStaffToolStripMenuItem.Text = "New Staff";
+            this.newStaffToolStripMenuItem.Size = new System.Drawing.Size(135, 68);
+            this.newStaffToolStripMenuItem.Text = "View Staff";
             this.newStaffToolStripMenuItem.Click += new System.EventHandler(this.newStaffToolStripMenuItem_Click);
             // 
             // equipmentToolStripMenuItem
@@ -109,15 +107,6 @@ namespace Gym_Membership_Mangement_System
             this.searchMemberToolStripMenuItem.Size = new System.Drawing.Size(130, 68);
             this.searchMemberToolStripMenuItem.Text = "GymRats";
             this.searchMemberToolStripMenuItem.Click += new System.EventHandler(this.searchMemberToolStripMenuItem_Click);
-            // 
-            // deleteMemberToolStripMenuItem
-            // 
-            this.deleteMemberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteMemberToolStripMenuItem.Image")));
-            this.deleteMemberToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.deleteMemberToolStripMenuItem.Name = "deleteMemberToolStripMenuItem";
-            this.deleteMemberToolStripMenuItem.Size = new System.Drawing.Size(164, 68);
-            this.deleteMemberToolStripMenuItem.Text = "Delete Member";
-            this.deleteMemberToolStripMenuItem.Click += new System.EventHandler(this.deleteMemberToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
@@ -208,7 +197,6 @@ namespace Gym_Membership_Mangement_System
         private System.Windows.Forms.ToolStripMenuItem newStaffToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem equipmentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchMemberToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteMemberToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;

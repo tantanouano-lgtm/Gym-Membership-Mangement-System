@@ -37,6 +37,7 @@ namespace Gym_Membership_Mangement_System
             this.label11 = new System.Windows.Forms.Label();
             this.dgvPayments = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).BeginInit();
             this.SuspendLayout();
@@ -126,6 +127,19 @@ namespace Gym_Membership_Mangement_System
             this.label1.TabIndex = 38;
             this.label1.Text = "Payment History";
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(23, 12);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(100, 30);
+            this.btnBack.TabIndex = 39;
+            this.btnBack.Text = "← Back";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // SearchMember
             // 
             this.AcceptButton = this.btnSearch;
@@ -134,6 +148,7 @@ namespace Gym_Membership_Mangement_System
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(861, 749);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvPayments);
             this.Controls.Add(this.label11);
@@ -165,5 +180,6 @@ namespace Gym_Membership_Mangement_System
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridView dgvPayments;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBack;
     }
 }

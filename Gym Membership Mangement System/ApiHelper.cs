@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 public class ApiHelper
 {
     private static readonly HttpClient client = new HttpClient();
-    private const string BaseUrl = "http://localhost/GMS/functions/api/";
+    private const string BaseUrl = "http://localhost/GMS/api/";  // FIXED: removed "functions/"
 
     // GET - Fetch all members
     public static async Task<string> GetMembers()
@@ -41,10 +41,10 @@ public class ApiHelper
         return await response.Content.ReadAsStringAsync();
     }
 
-    // GET - Fetch all staff ← FIXED: was staff.php, now get_staff.php
+    // GET - Fetch all staff
     public static async Task<string> GetStaff()
     {
-        HttpResponseMessage response = await client.GetAsync(BaseUrl + "get_staff.php");
+        HttpResponseMessage response = await client.GetAsync(BaseUrl + "staff.php");  // FIXED: use staff.php which actually exists
         return await response.Content.ReadAsStringAsync();
     }
 
@@ -53,7 +53,7 @@ public class ApiHelper
     {
         string json = JsonConvert.SerializeObject(staffData);
         StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-        HttpResponseMessage response = await client.PostAsync(BaseUrl + "add_staff.php", content);
+        HttpResponseMessage response = await client.PostAsync(BaseUrl + "staff.php", content);  // FIXED: use staff.php
         return await response.Content.ReadAsStringAsync();
     }
 
@@ -69,8 +69,7 @@ public class ApiHelper
     // GET - Fetch all equipment
     public static async Task<string> GetEquipment()
     {
-        HttpResponseMessage response = await client.GetAsync(
-            "http://localhost/GMS/api/equipment.php");
+        HttpResponseMessage response = await client.GetAsync(BaseUrl + "equipment.php");  // FIXED: now uses BaseUrl
         return await response.Content.ReadAsStringAsync();
     }
 
@@ -91,11 +90,26 @@ public class ApiHelper
         HttpResponseMessage response = await client.PostAsync(BaseUrl + "register_admin.php", content);
         return await response.Content.ReadAsStringAsync();
     }
-    // DELETE equipment
+
+    // DELETE - Delete equipment
     public static async Task<string> DeleteEquipment(int id)
     {
-        HttpResponseMessage response = await client.DeleteAsync(
-            "http://localhost/GMS/api/equipment.php?id=" + id);
+        HttpResponseMessage response = await client.DeleteAsync(BaseUrl + "equipment.php?id=" + id);  // FIXED: now uses BaseUrl
+        return await response.Content.ReadAsStringAsync();
+    }
+    // PUT - Update staff
+    public static async Task<string> UpdateStaff(int id, object staffData)
+    {
+        string json = JsonConvert.SerializeObject(staffData);
+        StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+        HttpResponseMessage response = await client.PutAsync(BaseUrl + "staff.php?id=" + id, content);
+        return await response.Content.ReadAsStringAsync();
+    }
+
+    // DELETE - Delete staff
+    public static async Task<string> DeleteStaff(int id)
+    {
+        HttpResponseMessage response = await client.DeleteAsync(BaseUrl + "staff.php?id=" + id);
         return await response.Content.ReadAsStringAsync();
     }
 }

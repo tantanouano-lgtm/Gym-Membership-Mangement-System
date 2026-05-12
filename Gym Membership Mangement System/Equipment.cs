@@ -137,5 +137,12 @@ namespace Gym_Membership_Mangement_System
         {
 
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 mainForm = new Form1();
+            mainForm.Show();
+        }
     }
 }

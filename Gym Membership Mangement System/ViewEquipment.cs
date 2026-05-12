@@ -140,5 +140,14 @@ namespace Gym_Membership_Mangement_System
                 refreshTimer.Dispose();
             }
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+           
+
+            this.Hide();
+            Equipment equipment = new Equipment();
+            equipment.Show();
+        }
     }
 }

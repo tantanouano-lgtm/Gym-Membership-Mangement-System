@@ -103,5 +103,12 @@ namespace Gym_Membership_Mangement_System
         private void label4_Click(object sender, EventArgs e) { }
         private void label5_Click(object sender, EventArgs e) { }
         private void dateTimePickerDOB_ValueChanged(object sender, EventArgs e) { }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 mainForm = new Form1();
+            mainForm.Show();
+        }
     }
 }

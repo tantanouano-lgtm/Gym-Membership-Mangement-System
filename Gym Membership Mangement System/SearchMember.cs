@@ -250,5 +250,18 @@ namespace Gym_Membership_Mangement_System
                 Console.WriteLine("Payment history error: " + ex.Message);
             }
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (refreshTimer != null)
+            {
+                refreshTimer.Stop();
+                refreshTimer.Dispose();
+            }
+
+            this.Hide();
+            Form1 mainForm = new Form1();
+            mainForm.Show();
+        }
     }
 }
