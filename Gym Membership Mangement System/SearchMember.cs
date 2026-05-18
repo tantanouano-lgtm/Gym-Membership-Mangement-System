@@ -27,12 +27,10 @@ namespace Gym_Membership_Mangement_System
         private async void SearchMember_Load(object sender, EventArgs e)
         {
             StartPaymentListener();
-            LoadPaymentHistory(""); // load all payment history on startup
+            LoadPaymentHistory("");
 
-            // Load all members immediately
             await LoadMembers();
 
-            // Auto-refresh every 5 seconds
             refreshTimer = new System.Windows.Forms.Timer();
             refreshTimer.Interval = 5000;
             refreshTimer.Tick += async (s, ev) => await LoadMembers();
@@ -85,7 +83,6 @@ namespace Gym_Membership_Mangement_System
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                // Also filter payment history by the search keyword
                 LoadPaymentHistory(keyword);
             }
             else
@@ -93,7 +90,6 @@ namespace Gym_Membership_Mangement_System
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = allMembers;
 
-                // Show all payment history when search is cleared
                 LoadPaymentHistory("");
             }
         }
@@ -133,43 +129,10 @@ namespace Gym_Membership_Mangement_System
                 {
                     conn.Open();
 
-                    string query = @"
-                        SELECT p.id, m.fullname, p.amount, p.type
-                        FROM payments p
-                        JOIN members m ON p.member = m.id
-                        WHERE p.is_notified = 0
-                        ORDER BY p.id DESC";
-
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    var newPayments = new List<(int id, string name, decimal amount, string type)>();
-
-                    while (reader.Read())
-                    {
-                        newPayments.Add((
-                            reader.GetInt32("id"),
-                            reader.GetString("fullname"),
-                            reader.GetDecimal("amount"),
-                            reader.GetString("type")
-                        ));
-                    }
-                    reader.Close();
-
-                    foreach (var payment in newPayments)
-                    {
-                        MessageBox.Show(
-                            $"Member: {payment.name}\nPlan: {payment.type}\nAmount: ₱{payment.amount:N2}\n\nPayment has been received!",
-                            "✅ New Payment",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
-
-                        string updateQuery = "UPDATE payments SET is_notified = 1 WHERE id = @id";
-                        MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
-                        updateCmd.Parameters.AddWithValue("@id", payment.id);
-                        updateCmd.ExecuteNonQuery();
-                    }
+                    // Just mark all unnotified payments as notified silently
+                    string updateQuery = "UPDATE payments SET is_notified = 1 WHERE is_notified = 0";
+                    MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
+                    updateCmd.ExecuteNonQuery();
 
                     // Refresh payment history after checking
                     LoadPaymentHistory(txtSearch.Text.ToLower());
@@ -194,7 +157,6 @@ namespace Gym_Membership_Mangement_System
 
                     if (keyword == "")
                     {
-                        // Show all payments
                         query = @"
                             SELECT 
                                 m.fullname AS Member,
@@ -210,7 +172,6 @@ namespace Gym_Membership_Mangement_System
                     }
                     else
                     {
-                        // Filter payments by member name or member id
                         query = @"
                             SELECT 
                                 m.fullname AS Member,
